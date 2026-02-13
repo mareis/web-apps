@@ -42,10 +42,22 @@ def søk():
 
     return render_template("sok.html", resultater=resultater, ordet=søkeord)
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
     beskjed = "Venligst logg inn."
-    farge = "green"
+    farge = "gray"
+
+    if request.method == "POST":
+        passord = request.form.get("passord")
+
+        if passord == "hemmelig passord":
+            beskjed = "Adgang godkjent! Velkommen til denne fantastiske siden."
+            farge = "green"
+
+        else:
+            beskjed = "Feil passord! Prøv igjen."
+            farge = "red"
+
 
     return render_template("login.html", farge=farge, tilbakemelding=beskjed)
 
