@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verktøykassa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Hjem</a>
+        <a href="/hund">Hundekalkulator</a>
+        <a href="/sok">Spillsøk</a>
+        <a href="/login">VIP login</a>
+    </nav>
+
+    <div class="container">
+        <h1>Finn spillet 🕹️🎮</h1>
+
+        <form action="/sok" method="get">
+            <input type="text" name="spillet" placeholder="Søk etter spillet">
+            <button type="submit">Søk</button>
+        </form>
+
+        <ul style="text-align: left;">
+
+            {% for spill in resultater %}
+                <li> {{ spill }} </li>
+            {% else %}
+                <li style="color: red;"> Ingen spill funnet </li>
+            {% endfor %}
+
+
+        </ul>
+
+    </div>
+
+
+
+
+
+
+</body>
+</html>

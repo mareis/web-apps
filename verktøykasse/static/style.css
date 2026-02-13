@@ -1,0 +1,128 @@
+/* 1. VARIABLER - Her styrer vi fargetemaet ett sted */
+:root {
+    --primary-color: #4a90e2;    /* En moderne blåfarge */
+    --primary-hover: #357abd;    /* Mørkere blå for hover */
+    --bg-color: #f0f2f5;         /* Lys grå bakgrunn (Facebook-stil) */
+    --card-bg: #ffffff;          /* Hvit bakgrunn for bokser */
+    --text-color: #333333;       /* Mørk grå tekst (bedre enn ren svart) */
+    --nav-bg: #2c3e50;           /* Mørk navigasjon */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Pen, myk skygge */
+    --radius: 12px;              /* Hvor runde hjørnene skal være */
+}
+
+/* 2. GENERELT OPPSETT */
+* {
+    box-sizing: border-box; /* Gjør at padding ikke ødelegger bredden */
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif; /* Moderne font-stack */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    min-height: 100vh; /* Sikrer at siden fyller hele høyden */
+    display: flex;     /* Vi bruker Flexbox på hele kroppen... */
+    flex-direction: column; /* ...for å legge Meny øverst og innhold under */
+    align-items: center;    /* ...og sentrere alt i midten */
+}
+
+/* 3. NAVIGASJON (Flexbox) */
+nav {
+    width: 100%;
+    background-color: var(--nav-bg);
+    padding: 1rem 0;
+    margin-bottom: 40px;
+    
+    /* Flex-magi for menyen: */
+    display: flex;
+    justify-content: center; /* Midtstiller lenkene vannrett */
+    gap: 30px;               /* Lager jevnt mellomrom mellom lenkene */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.2s ease; /* Myk overgang */
+}
+
+nav a:hover {
+    color: var(--primary-color); /* Lyser opp når musa er over */
+}
+
+/* 4. HOVEDBOKSEN (Container) */
+.container {
+    background-color: var(--card-bg);
+    width: 90%;          /* Mobilvennlig: Tar 90% av bredden... */
+    max-width: 450px;    /* ...men stopper på 450px på store skjermer */
+    padding: 2rem;       /* Mer luft inni boksen */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    
+    /* Flexbox inni containeren også, for å styre innholdet */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Automatisk avstand mellom overskrift, input og knapp */
+}
+
+/* 5. SKJEMA-ELEMENTER */
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e1e4e8; /* Tynn, lys ramme */
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color); /* Blir blå når du skriver */
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+}
+
+button:active {
+    transform: scale(0.98); /* Liten "trykk"-effekt når man klikker */
+}
+
+/* 6. LISTER (CSS Grid for søkeresultater) */
+/* Dette gjør listen om til et kult rutenett i stedet for en kjedelig liste */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    
+    /* Grid-magi: */
+    display: grid;
+    /* Lag så mange kolonner det er plass til, min 100px brede */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    gap: 10px;
+}
+
+li {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+}

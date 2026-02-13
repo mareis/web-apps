@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verktøykassa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Hjem</a>
+        <a href="/hund">Hundekalkulator</a>
+        <a href="/sok">Spillsøk</a>
+        <a href="/login">VIP login</a>
+    </nav>
+
+    <h1>Hundekalkulator 🐕</h1>
+
+    <form action="/hund" method="get">
+        <input type="number" name="alder" placeholder="Skriv inn hundens menneskeår">
+        <button type="submit">Beregn alder</button>
+    </form>
+
+    <h3>{{ melding }}</h3>
+
+</body>
+</html>
