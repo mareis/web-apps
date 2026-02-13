@@ -42,11 +42,12 @@ def søk():
 
     return render_template("sok.html", resultater=resultater, ordet=søkeord)
 
+@app.route("/login")
+def login():
+    beskjed = "Venligst logg inn."
+    farge = "green"
 
-
-    
-
-
+    return render_template("login.html", farge=farge, tilbakemelding=beskjed)
 
 
 if __name__ == "__main__":
