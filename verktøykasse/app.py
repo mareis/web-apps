@@ -26,8 +26,10 @@ def søk():
 
     resultater = spilliste
 
-    if "q" in request.args:
-        søkeord = request.args.get("q")
+    søkeord = ""
+
+    if "spillet" in request.args:
+        søkeord = request.args.get("spillet")
 
         if søkeord:
             filtrert_liste = []
@@ -38,7 +40,7 @@ def søk():
             resultater = filtrert_liste
 
 
-    return render_template("sok.html", resultater=resultater)
+    return render_template("sok.html", resultater=resultater, ordet=søkeord)
 
 
 
